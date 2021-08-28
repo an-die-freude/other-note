@@ -4,7 +4,7 @@
 
 https://dev.mysql.com/downloads/mysql/
 
-##### 2 解压后在根目录创建文件my.imi，内容根据需求更改
+##### 2 解压后在根目录创建文件my.ini，内容根据需求更改
 
 ```
 [mysqld]
