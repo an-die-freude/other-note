@@ -20,7 +20,7 @@ https://github.com/Molunerfinn/PicGo/releases
 
 3） 更改Picgo中的Gitee图床设置
 
-![image-20210824223927341](https://gitee.com/k864197/img/raw/master/typora+picgo+gitee_build_online_note3.png)
+![image-20210824223927341](https://gitee.com/k864197/img/raw/master/typora+picgo+gitee_build_online_note_3.png)
 
 ![image-20210920192118749](https://gitee.com/k864197/img/raw/master/%20typora+picgo+gitee_build_online_note_4.png)
 
