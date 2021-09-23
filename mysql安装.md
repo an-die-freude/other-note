@@ -36,23 +36,23 @@ default-character-set=utf8mb4
 
 1） 以管理员身份打开cmd并且切换到mysql的bin目录下
 
-```
+```shell
 cd D:\Tools\mysql-8.0.26\bin
 ```
 
 2） 初始化数据库
 
-```
+```shell
 mysqld --initialize --console
 ```
 
 3） 安装并启动mysql
 
-```
+```shell
 mysqld install
 ```
 
-```
+```shell
 net start mysql
 ```
 
@@ -60,19 +60,19 @@ net start mysql
 
 1） 停止mysql服务
 
-```
+```shell
 net stop mysql
 ```
 
 2） 无密码启动
 
-```
+```shell
 mysqld --console --skip-grant-tables --shared-memory
 ```
 
 3） 打开另一个cmd窗口就可以无密码登录
 
-```
+```shell
 mysql -u root
 ```
 
@@ -99,4 +99,24 @@ mysqld --init-file=D:\123456.txt --console
 ```
 
 #### 二 Ubuntu系统
+
+##### 1 更新系统并安装mysql
+
+```shell
+sudo apt update
+sudo apt install mysql-server
+```
+
+##### 2 切换到root用户并初始化
+
+```shell
+sudo root
+mysql_secure_installation
+```
+
+##### 3 登录数据库
+
+```shell
+mysql -u root -p
+```
 
