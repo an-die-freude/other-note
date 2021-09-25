@@ -173,10 +173,24 @@ services:
 切换到/home/mu/program/docker-container/mysql目录下
 
 ```shell
-docker-compose up -d
+docker-compose --compatibility up -d
 ```
 
-```
+```shell
 docker ps
+```
+
+```shell
+docker exec -it <container ID> /bin/bash
+```
+
+```shell
+mysql -u root -p
+```
+
+如果失败可以查看启动日志
+
+```shell
+docker logs --tail 50 --follow --timestamps <container name>
 ```
 
