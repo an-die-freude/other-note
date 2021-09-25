@@ -142,24 +142,30 @@ mysql/
 docker-compose.yml
 
 ```yaml
-version: '1'
+version: '3.1'
 services:
     mysql:
-        container_name: "mysql" #容器名
-        network_mode: "host" #网络模式
+        container_name: mysql #容器名
+        network_mode: host #网络模式
         environment:
-            MYSQL_ROOT_PASSWORD: "123456" #root 用户密码
-            MYSQL_USER: 'mysql' # 其他用户的用户名
-            MYSQL_PASS: '123456' # 其他用户的密码
-        image: "mysql" #使用的镜像，镜像不存在会自动下载
+            MYSQL_ROOT_PASSWORD: 123456 #root 用户密码
+            MYSQL_USER: mysql # 其他用户的用户名
+            MYSQL_PASS: 123456 # 其他用户的密码
+        command:
+            --default-authentication-plugin=mysql_native_password
+            --character-set-server=utf8mb4
+            --collation-server=utf8mb4_general_ci
+            --explicit_defaults_for_timestamp=true
+            --lower_case_table_name=1
+        image: mysql #使用的镜像，镜像不存在会自动下载
         restart: always # 启动方式always是自动启动
         ports:
             - 3306:3306 #映射端口，前面的是宿主机端口
         volumes: # 环境值
-            - "/home/mu/program/docker-container/mysql/mysql-files:/var/lib/mysql-file
+            - /home/mu/program/docker-container/mysql/mysql-files:/var/lib/mysql-file
             #新版的mysql需要添加该项配置
-            - "/home/mu/program/docker-container/mysql/db:/var/lib/mysql"
-            - "/home/mu/program/docker-container/mysql/conf:/etc/mysql"
-            - "/home/mu/program/docker-container/mysql/log:/var/log/mysql"
+            - /home/mu/program/docker-container/mysql/db:/var/lib/mysql
+            - /home/mu/program/docker-container/mysql/conf:/etc/mysql
+            - /home/mu/program/docker-container/mysql/log:/var/log/mysql
 ```
 

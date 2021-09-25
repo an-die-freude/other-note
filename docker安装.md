@@ -52,6 +52,8 @@ sudo apt-mark hold docker-ce
 
 ```shell
 sudo usermod -aG docker $USER
+su root
+su 用户名
 ```
 
 运行测试容器
