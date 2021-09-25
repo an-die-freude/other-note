@@ -60,6 +60,22 @@ sudo usermod -aG docker $USER
 docker container run hello-world
 ```
 
+更换国内镜像源并重启服务
+
+```shell
+sudo vim /etc/docker/daemon.json
+```
+
+```shell
+{
+"registry-mirrors":["http://hub-mirror.c.163.com"]
+}
+```
+
+```shell
+sudo systemctl restart docker
+```
+
 ##### 4 卸载
 
 停止所有正在运行的容器并移除所有docker对象
