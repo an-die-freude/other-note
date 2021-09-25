@@ -68,7 +68,11 @@ sudo vim /etc/docker/daemon.json
 
 ```shell
 {
-"registry-mirrors":["http://hub-mirror.c.163.com"]
+"registry-mirrors":[
+	"https://hub-mirror.c.163.com",
+	"https://ustc-edu-cn.mirror.aliyuncs.com",
+	"https://ghcr.io",
+	"https://mirror.baidubce.com"]
 }
 ```
 

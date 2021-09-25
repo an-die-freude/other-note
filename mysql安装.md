@@ -120,3 +120,11 @@ mysql_secure_installation
 mysql -u root -p
 ```
 
+#### 三 Ubuntu系统docker部署
+
+1 拉取镜像
+
+```shell
+sudo docker pull mysql
+```
+
