@@ -103,14 +103,14 @@ mysqld --init-file=D:\123456.txt --console
 ##### 1 更新系统并安装mysql
 
 ```shell
-sudo apt update
-sudo apt install mysql-server
+apt update
+apt install mysql-server
 ```
 
 ##### 2 切换到root用户并初始化
 
 ```shell
-sudo root
+su root
 mysql_secure_installation
 ```
 
@@ -125,7 +125,7 @@ mysql -u root -p
 ##### 1 拉取镜像
 
 ```shell
-sudo docker pull mysql
+docker pull mysql
 ```
 
 ##### 2 在任意目录下创建如下目录结构
@@ -133,7 +133,7 @@ sudo docker pull mysql
 ```
 mysql/
 ├ conf/
-├ db/
+├ mysql/
 ├ log/
 ├ mysql-files/
 ├ docker-compose.yml
@@ -156,16 +156,27 @@ services:
             --character-set-server=utf8mb4
             --collation-server=utf8mb4_general_ci
             --explicit_defaults_for_timestamp=true
-            --lower_case_table_name=1
+            --lower_case_table_names=1
         image: mysql #使用的镜像，镜像不存在会自动下载
         restart: always # 启动方式always是自动启动
         ports:
             - 3306:3306 #映射端口，前面的是宿主机端口
         volumes: # 环境值
-            - /home/mu/program/docker-container/mysql/mysql-files:/var/lib/mysql-file
-            #新版的mysql需要添加该项配置
-            - /home/mu/program/docker-container/mysql/db:/var/lib/mysql
+         	- /home/mu/program/docker-container/mysql/mysql-files:/var/lib/mysql-files
+            - /home/mu/program/docker-container/mysql/mysql:/var/lib/mysql
             - /home/mu/program/docker-container/mysql/conf:/etc/mysql
             - /home/mu/program/docker-container/mysql/log:/var/log/mysql
+```
+
+##### 3 运行容器
+
+切换到/home/mu/program/docker-container/mysql目录下
+
+```shell
+docker-compose up -d
+```
+
+```
+docker ps
 ```
 
