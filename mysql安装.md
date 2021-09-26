@@ -194,3 +194,76 @@ mysql -u root -p
 docker logs --tail 50 --follow --timestamps <container name>
 ```
 
+授权远程访问
+
+```sql
+select host, user, authentication_string, plugin from user;
+GRANT ALL ON *.* TO 'root'@'%';
+flush privileges;
+```
+
+#### 四 搭建主从配置
+
+##### 1 修改主数据库的配置文件并重启mysql
+
+添加如下内容
+
+```
+[mysqld]
+server-id=1
+binlog-do-db=<需要同步的数据库名>	#可设置多个
+binlog-ignore-db=<不同步的数据库名>
+```
+
+##### 2 在主数据库新建一个账号用来复制数据并授权
+
+```sql
+CREATE USER `slave`@`%` IDENTIFIED WITH mysql_native_password BY '123456'
+```
+
+```sql
+GRANT REPLICATION SLAVE ON *.* to 'slave'@'192.168.137.7';
+FLUSH PRIVILEGES
+```
+
+##### 3 查看主数据库当前二进制日志名和偏移量
+
+```sql
+SHOW MASTER STATUS
+```
+
+![image-20210926235022893](https://gitee.com/k864197/img/raw/master/mysql_install_1.png)
+
+这个操作的目的是为了在从数据库启动后，从这个点开始进行数据的恢复
+
+##### 4 从数据库的配置文件并重启
+
+添加如下内容：
+
+```
+[mysqld]
+server-id=2	#区别主数据库的server-id
+```
+
+##### 5 从数据库执行
+
+```sql
+CHANGE MASTER TO master_host = "192.168.1.10",
+master_user = "slave",
+master_password = "123456",
+master_log_file = "binlog.000010",
+master_log_pos = 370
+```
+
+master_host即主数据库ip，master_user、master_password即主数据库创建的那个用户和密码，master_log_file、master_log_pos即主数据库的二进制日志名和偏移量
+
+```sql
+START SLAVE
+```
+
+```sql
+SHOW SLAVE STATUS
+```
+
+![image-20210926235022894](https://gitee.com/k864197/img/raw/master/mysql_install_2.png)
+
