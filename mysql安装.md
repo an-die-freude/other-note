@@ -267,3 +267,4 @@ SHOW SLAVE STATUS
 
 ![image-20210926235022894](https://gitee.com/k864197/img/raw/master/mysql_install_2.png)
 
+Slave_IO_Running和Slave_SQL_Running都为Yes则说明同步成功
