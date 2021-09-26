@@ -162,7 +162,7 @@ services:
         ports:
             - 3306:3306 #映射端口，前面的是宿主机端口
         volumes: # 环境值
-         	- /home/mu/program/docker-container/mysql/mysql-files:/var/lib/mysql-files
+            - /home/mu/program/docker-container/mysql/mysql-files:/var/lib/mysql-files
             - /home/mu/program/docker-container/mysql/mysql:/var/lib/mysql
             - /home/mu/program/docker-container/mysql/conf:/etc/mysql
             - /home/mu/program/docker-container/mysql/log:/var/log/mysql
