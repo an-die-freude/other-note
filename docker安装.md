@@ -89,3 +89,11 @@ apt purge docker-ce
 apt autoremove
 ```
 
+##### 5 其他
+
+查看容器信息
+
+```shell
+docker inspect <containername/id>
+```
+
