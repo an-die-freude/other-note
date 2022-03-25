@@ -48,7 +48,7 @@ Import-Module oh-my-posh
 Set-PoshPrompt -Theme Paradox
 ```
 
-这里可能会出现乱码的问题，需要安装对应的字体，https://www.nerdfonts.com下载**Cousine Nerd Font**并安装
+这里可能会出现乱码的问题，需要安装对应的字体，https://www.nerdfonts.com 下载**Cousine Nerd Font**并安装
 
 ![terminal_beauty_1](/img/terminal_beauty_1.png)
 
